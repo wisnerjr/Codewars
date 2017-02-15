@@ -2,15 +2,19 @@ class Unique
 
 	def self.unique_in_order(iterable)
 
-	  iterable = iterable.split('')
-	  result = []
-	  
-	  iterable.each do |i|
-	    unless result.last(1).include?(i)
-	      result << i
-	    end
-	  end
-	  result
+		result = []
+
+		for i in 0..iterable.length
+		  char = iterable[i]
+		  unless result.last(1).include?(char)
+		    result << char
+		  end
+		end
+
+		result.each do |i|
+		     result.delete_if { |i| i == "[" || i == "," || i == " " || i == "]" || i == "\"" || i.nil?}
+		 end
+		result
 	end
 	
 end
